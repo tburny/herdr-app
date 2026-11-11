@@ -1,17 +1,17 @@
 {
-  "version": "0.1.16-forktest.1",
+  "version": "0.1.16-forktest.2",
   "assets": {
     "aarch64-darwin": {
       "name": "herdr-app-macos-aarch64.tar.gz",
-      "hash": "sha256-ek7nYRb4EJEt4OocNP3ao50BPO0gQx7I/XMzPF8yZB8="
+      "hash": "sha256-eZnZtW0eFs2eJa0xyti6WAF8PR/UebA1adwjj8hb43A="
     },
     "aarch64-linux": {
       "name": "herdr-app-linux-aarch64.tar.gz",
-      "hash": "sha256-1ewzeiE2iG7fC8jq5Nt1043ax7GdsXIbUXeVCzYlwb4="
+      "hash": "sha256-mBxXnUsclVyeoWW6aTeihEMwpBw2+XPnz11RiSioVnM="
     },
     "x86_64-linux": {
       "name": "herdr-app-linux-x86_64.tar.gz",
-      "hash": "sha256-DJCYfTA4s38I6GbHXT4rsS4jFdqIlbgidLGsdYoTC74="
+      "hash": "sha256-efPLqGWWqylXwq7QMvdVvHxVg5DD+wNSRzf8CNeBWw4="
     }
   }
 }

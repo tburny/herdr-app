@@ -247,7 +247,7 @@ jobs:
   # waits for the tag: app/Herdr.dmg is what the website offers.
   mac-dmg:
     needs: [build, ci-passed, tag]
-    if: inputs.release && github.triggering_actor == 'ogulcancelik' && needs.tag.result == 'success'
+    if: "!cancelled() && inputs.release && github.triggering_actor == 'ogulcancelik' && needs.tag.result == 'success'"
     environment: release
     runs-on: macos-15
     timeout-minutes: 40
@@ -371,6 +371,8 @@ jobs:
   # A tag pushed with GITHUB_TOKEN starts no workflow.
   tag:
     needs: stage
+    # A skipped sign-windows would skip every job after it without !cancelled().
+    if: "!cancelled() && needs.stage.result == 'success'"
     runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:
@@ -402,6 +404,7 @@ jobs:
   # No x86_64-darwin: the app has no Intel Mac build.
   nix:
     needs: tag
+    if: "!cancelled() && needs.tag.result == 'success'"
     strategy:
       fail-fast: false
       matrix:
@@ -446,6 +449,7 @@ jobs:
   # moved on since the release commit.
   publish:
     needs: [stage, tag]
+    if: "!cancelled() && needs.tag.result == 'success'"
     environment: release
     runs-on: ubuntu-latest
     timeout-minutes: 15

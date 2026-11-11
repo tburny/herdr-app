@@ -1,5 +1,10 @@
 # Herdr changelog
 
+## [0.1.16-forktest.1] - 2026-11-11
+
+### New
+- Fork test of the build-before-tag release with a Nix flake. Not a release.
+
 ## [0.1.15] - 2026-11-10
 
 ### New

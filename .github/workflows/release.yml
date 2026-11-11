@@ -121,9 +121,12 @@ jobs:
       - name: Windows build dependencies
         if: runner.os == 'Windows'
         run: echo "LIBCLANG_PATH=C:\\Program Files\\LLVM\\bin" >> "$GITHUB_ENV"
-      - name: Version is not released yet
+      # The release environment's branch rule is the real guard; this one
+      # stops a release started from a branch by mistake.
+      - name: Releases come from master, with a new version
         if: env.IS_RELEASE == 'true'
         run: |
+          [ "$GITHUB_REF" = refs/heads/master ] || { echo "release from master, not $GITHUB_REF"; exit 1; }
           tag="v$(sed -n 's/^version = "\(.*\)"/\1/p' Cargo.toml | head -1)"
           found=$(git ls-remote --tags origin "refs/tags/$tag")
           [ -z "$found" ] || { echo "$tag is tagged already: bump Cargo.toml"; exit 1; }

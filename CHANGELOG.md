@@ -1,5 +1,10 @@
 # Herdr changelog
 
+## [0.1.16-forktest.2] - 2026-11-11
+
+### Fixed
+- Fork test: the Nix flake links fontconfig on aarch64 Linux. Not a release.
+
 ## [0.1.16-forktest.1] - 2026-11-11
 
 ### New

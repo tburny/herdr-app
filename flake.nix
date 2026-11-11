@@ -21,6 +21,7 @@
           autoPatchelfHook,
           makeDesktopItem,
           copyDesktopItems,
+          fontconfig,
           libxcb,
           libxkbcommon,
           libGL,
@@ -46,8 +47,10 @@
             autoPatchelfHook
             copyDesktopItems
           ];
+          # The aarch64 build links fontconfig; the x86_64 build doesn't.
           buildInputs = lib.optionals isLinux [
             stdenv.cc.cc.lib
+            fontconfig
             libxcb
             libxkbcommon
           ];
